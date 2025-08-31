@@ -20,7 +20,15 @@ Should create structs and populate the array
 */
 void initCells(Cell* board[][10], int boardSize)
 {
-
+    for(int i = 0; i < boardSize; i++){
+        for(int j = 0; j < boardSize; j++){
+            board[i][j] = new Cell;
+            board[i][j]->x = i;
+            board[i][j]->y = j; 
+            board[i][j]->state = 0;
+            board[i][j]->numLiveNeighbors = 0;
+        }
+    }
 }
 
 /*
@@ -30,7 +38,30 @@ Structure of file should consist of 10 lines of 0 or 1 to indicate cell state
 */
 void readBoard(Cell* board[][10], int boardSize) 
 {
+    string filename;
+    cout << "Enter filename: ";
+    cin >> filename;
 
+    ifstream inFile(filename);
+    if(!inFile){
+        cout << "Error opening file." << endl;
+        return;
+    }
+
+    string line;
+    for(int i = 0; i < boardSize; i++){
+        inFile >> line;
+        for(int j = 0; j < boardSize; j++){
+            if(line[j] == '1'){
+                board[i][j]->state = 1;
+            }
+            else{
+                board[i][j]->state = 0;
+            }
+        }
+    }
+
+    inFile.close();
 }
 
 /*
@@ -38,7 +69,17 @@ Function to print out all cells to cout
 */
 void printCells(Cell* board[][10], int boardSize)
 {
-
+    for(int i = 0; i < boardSize; i++){
+        for(int j = 0; j < boardSize; j++){
+            if(board[i][j]->state == 1){
+                cout << '0';
+            }
+            else{
+                cout << '.';
+            };
+        }
+        cout << endl;
+    }
 }
 
 /*
