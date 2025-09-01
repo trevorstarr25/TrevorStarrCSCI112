@@ -88,7 +88,22 @@ Must use the x, y position stored with each cell to determine which neighbors th
 */
 void findNumNeighbors(Cell* board[][10], int boardSize, Cell* curCell) 
 {
+    int x = curCell->x;
+    int y = curCell->y;
+    int count = 0;
 
+    for(int dx = -1; dx <= 1; dx++){
+        for(int dy = -1; dy <= 1; dy++){
+            if(dx == 0 && dy == 0) continue;
+            int nx = x + dx;
+            int ny = y + dy;
+            if(nx >= 0 && nx < boardSize && ny >= 0 && ny < boardSize){
+                if(board[nx][ny]->state == 1){
+                    count++;
+                }
+            }
+        }
+    }
 }
 
 /*
