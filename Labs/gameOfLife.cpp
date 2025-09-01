@@ -41,6 +41,9 @@ void readBoard(Cell* board[][10], int boardSize)
     string filename;
     cout << "Enter filename: ";
     cin >> filename;
+    
+    // This took me years to find
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
     ifstream inFile(filename);
     if(!inFile){
@@ -52,12 +55,7 @@ void readBoard(Cell* board[][10], int boardSize)
     for(int i = 0; i < boardSize; i++){
         inFile >> line;
         for(int j = 0; j < boardSize; j++){
-            if(line[j] == '1'){
-                board[i][j]->state = 1;
-            }
-            else{
-                board[i][j]->state = 0;
-            }
+            board[i][j]->state = (line[j] == '1') ? 1 : 0;
         }
     }
 
@@ -143,7 +141,15 @@ bool updateCellState(Cell* board[][10], int boardSize)
         }
     }
 
-    
+    bool changed = false;
+    for(int i = 0; i < boardSize; i++){
+        for(int j = 0; j < boardSize; j++){
+            if(board[i][j]->state != nextState[i][j]){
+                changed = true;
+                board[i][j]->state = nextState[i][j];
+            }
+        }
+    }
 
-    return false;
+    return changed;
 }

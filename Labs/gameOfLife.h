@@ -9,7 +9,7 @@ struct Cell
 {
     int x, y;
     int state;
-    int numLiveNeighbors = 0;
+    int numLiveNeighbors;
 };
 
 /*
