@@ -37,17 +37,17 @@ points::Point* points::Point::calcNearestPoint(Point* pointList[], unsigned long
 //Setters
 void points::Point::setX(int newVal)
 {
-
+    x = newVal;
 }
 
 void points::Point::setY(int newVal)
 {
-
+    y = newVal;
 }
 
 void points::Point::setNearestPoint(Point* newNearestPoint)
 {
-
+    nearestPoint = newNearestPoint;
 }
 
 double points::Point::distPoints(Point& point)
