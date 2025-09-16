@@ -3,7 +3,9 @@
 //Constructor
 points::Point::Point(int X, int Y, points::Point* closestPoint)
 {
-
+    x = X;
+    y = Y;
+    nearestPoint = closestPoint;
 }
 //Destructor
 points::Point::~Point()
@@ -14,12 +16,12 @@ points::Point::~Point()
 //Getters
 int points::Point::getX()
 {
-    return 0;
+    return x;
 }
 
 int points::Point::getY()
 {
-    return 0;
+    return y;
 }
 
 points::Point* points::Point::getNearestPoint()
