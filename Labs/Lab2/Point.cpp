@@ -26,7 +26,7 @@ int points::Point::getY()
 
 points::Point* points::Point::getNearestPoint()
 {
-    return nullptr;
+    return nearestPoint;
 }
 
 points::Point* points::Point::calcNearestPoint(Point* pointList[], unsigned long arrSize)
@@ -52,5 +52,5 @@ void points::Point::setNearestPoint(Point* newNearestPoint)
 
 double points::Point::distPoints(Point& point)
 {
-    return 0.0;
+    return sqrt(pow(x - point.getX(), 2) + pow(y - point.getY(), 2));
 }
