@@ -40,8 +40,8 @@ fractions::Fraction fractions::Fraction::operator-(fractions::Fraction const &fr
 fractions::Fraction fractions::Fraction::operator*(Fraction const &frac)
 {
     Fraction result(
-        _numerator * frac._denominator,
-        _denominator * frac._numerator
+        _numerator * frac._numerator,
+        _denominator * frac._denominator
     );
     result.simplify();
     return result;
