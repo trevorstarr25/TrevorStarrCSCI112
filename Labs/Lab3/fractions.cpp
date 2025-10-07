@@ -39,11 +39,14 @@ fractions::Fraction fractions::Fraction::simplify(Fraction frac)
 
 void fractions::Fraction::simplify()
 {
+    *this = simplify(*this);
 }
 
 int fractions::Fraction::gcd(int a, int b)
 {
-    return 0;
+    if(b == 0)
+        return a;
+    return gcd(b, a % b);
 }
 
 bool fractions::Fraction::operator==(Fraction const &frac)
