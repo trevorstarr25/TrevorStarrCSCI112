@@ -2,7 +2,19 @@
 
 fractions::Fraction::Fraction(int numerator, int denominator)
 {
-    
+    if(denominator == 0){
+        cout << "Enter a numerator: ";
+        cin >> _numerator;
+        do {
+            cout << "Enter a denominator: ";
+            cin >> _denominator;
+            if(_denominator == 0)
+                cout << "Denominator cannot be 0." << endl;
+        } while(_denominator == 0);
+    } else {
+        _numerator = numerator;
+        _denominator = denominator;
+    }
 }
 
 fractions::Fraction fractions::Fraction::operator+(fractions::Fraction const &frac)
@@ -59,6 +71,8 @@ fractions::Fraction fractions::Fraction::simplify(Fraction frac)
         frac._numerator = -frac._numerator;
         frac._denominator = -frac._denominator;
     }
+
+    return frac;
 }
 
 void fractions::Fraction::simplify()
@@ -77,10 +91,11 @@ bool fractions::Fraction::operator==(Fraction const &frac)
 {
     Fraction f1 = simplify(*this);
     Fraction f2 = simplify(frac);
-    return f1._numerator == f2._numerator && f1._denominator == f2._denominator
+    return f1._numerator == f2._numerator && f1._denominator == f2._denominator;
 }
 
 ostream &fractions::operator<<(ostream &os, const Fraction &frac)
 {
+    os << frac._numerator << "/" << frac._denominator;
     return os;
 }
