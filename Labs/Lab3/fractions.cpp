@@ -2,6 +2,7 @@
 
 fractions::Fraction::Fraction(int numerator, int denominator)
 {
+    // Testing testing
 }
 
 fractions::Fraction fractions::Fraction::operator+(fractions::Fraction const &frac)
