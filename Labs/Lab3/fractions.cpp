@@ -2,7 +2,7 @@
 
 fractions::Fraction::Fraction(int numerator, int denominator)
 {
-    // Testing testing
+    
 }
 
 fractions::Fraction fractions::Fraction::operator+(fractions::Fraction const &frac)
@@ -27,7 +27,14 @@ fractions::Fraction fractions::Fraction::operator/(Fraction const &frac)
 
 fractions::Fraction fractions::Fraction::simplify(Fraction frac)
 {
-    return Fraction(0, 1);
+    int val = gcd(abs(frac._numerator), abs(frac._denominator));
+    frac._numerator /= val;
+    frac._denominator /= val;
+
+    if(frac._denominator < 0){
+        frac._numerator = -frac._numerator;
+        frac._denominator = -frac._denominator;
+    }
 }
 
 void fractions::Fraction::simplify()
