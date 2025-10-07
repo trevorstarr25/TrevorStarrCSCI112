@@ -22,7 +22,16 @@ fractions::Fraction fractions::Fraction::operator*(Fraction const &frac)
 
 fractions::Fraction fractions::Fraction::operator/(Fraction const &frac)
 {
-    return Fraction(0, 1);
+    Fraction result(
+        _numerator * frac._denominator,
+        _denominator * frac._numerator
+    );
+    if(result._denominator == 0){
+        cout << "Error: division by 0" << endl;
+        result._denominator = 1;
+    }
+    result.simplify();
+    return result;
 }
 
 fractions::Fraction fractions::Fraction::simplify(Fraction frac)
@@ -51,7 +60,9 @@ int fractions::Fraction::gcd(int a, int b)
 
 bool fractions::Fraction::operator==(Fraction const &frac)
 {
-    return false;
+    Fraction f1 = simplify(*this);
+    Fraction f2 = simplify(frac);
+    return f1._numerator == f2._numerator && f1._denominator == f2._denominator
 }
 
 ostream &fractions::operator<<(ostream &os, const Fraction &frac)
