@@ -3,10 +3,10 @@
 fractions::Fraction::Fraction(int numerator, int denominator)
 {
     if(denominator == 0){
-        cout << "Enter a numerator: ";
+        cout << "Enter numerator: ";
         cin >> _numerator;
         do {
-            cout << "Enter a denominator: ";
+            cout << "Enter denominator: ";
             cin >> _denominator;
             if(_denominator == 0)
                 cout << "Denominator cannot be 0." << endl;
