@@ -7,17 +7,32 @@ fractions::Fraction::Fraction(int numerator, int denominator)
 
 fractions::Fraction fractions::Fraction::operator+(fractions::Fraction const &frac)
 {
-    return Fraction(0, 1);
+    Fraction result(
+        _numerator * frac._denominator + frac._numerator * _denominator,
+        _denominator * frac._denominator
+    );
+    result.simplify();
+    return result;
 }
 
 fractions::Fraction fractions::Fraction::operator-(fractions::Fraction const &frac)
 {
-    return Fraction(0, 1);
+    Fraction result(
+        _numerator * frac._denominator - frac._numerator * _denominator,
+        _denominator * frac._denominator
+    );
+    result.simplify();
+    return result;
 }
 
 fractions::Fraction fractions::Fraction::operator*(Fraction const &frac)
 {
-    return Fraction(0, 1);
+    Fraction result(
+        _numerator * frac._denominator,
+        _denominator * frac._numerator
+    );
+    result.simplify();
+    return result;
 }
 
 fractions::Fraction fractions::Fraction::operator/(Fraction const &frac)
