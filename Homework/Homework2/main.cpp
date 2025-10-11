@@ -1,18 +1,33 @@
 #include "starWars.h"
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 using namespace std;
 
 using namespace starwars;
 
 int main(){
+    srand(time(0));
     string filename = "jedi_data.txt";
     string jediName;
+    int jediChoice;
 
     cout << "Enter Jedi name: ";
     getline(cin, jediName);
 
-    Jedi player(jediName);
-    player.saveToFile(filename);
+    cout << "Enter Jedi name: ";
+    getline(cin, jediName);
+
+    cout << "Choose Jedi type:\n1. Guardian\n2. Consular\nChoice: ";
+    cin >> jediChoice;
+
+    Jedi* player;
+    if(jediChoice == 1)
+        player = new Guardian(jediName);
+    else
+        player = new Consular(jediName);
+
+    player->saveToFile(filename);
     cout << "\nJedi saved." << endl;
 
     Jedi loadedJedi;
@@ -23,32 +38,39 @@ int main(){
     cout << "Lightsaber Skill: " << loadedJedi.getLightsaberSkill() << endl;
     cout << "Force Power: " << loadedJedi.getForcePower() << endl;
 
-    Sith darth("Darth Maul", 120, 60);
-    cout << "\nYour opponent: " << darth.getName() << endl;
+   Sith* darth;
+    if(rand()%2 == 0)
+        darth = new Acolyte();
+    else
+        darth = new Darth();
 
-    while(loadedJedi.getHealth() > 0 && darth.getHealth() > 0){
-        int jediAttack = loadedJedi.attack();
-        int sithAttack = darth.attack();
+    cout << "\nYour opponent: " << darth->getName() << endl;
 
-        cout << loadedJedi.getName() << " deals " << jediAttack << " damage." << endl;
-        darth.takeDamage(jediAttack);
+    while(player->getHealth() > 0 && darth->getHealth() > 0){
+        int jediAttack = player->attack();
+        int sithAttack = darth->attack();
 
-        if(darth.getHealth() <= 0){
-            cout << darth.getName() << " has been defeated." << endl;
+        cout << player->getName() << " deals " << jediAttack << " damage." << endl;
+        darth->takeDamage(jediAttack);
+
+        if(darth->getHealth() <= 0){
+            cout << darth->getName() << " has been defeated." << endl;
             break;
         }
 
-        cout << darth.getName() << " deals " << sithAttack << " damage." << endl;
-        loadedJedi.takeDamage(sithAttack);
+        cout << darth->getName() << " deals " << sithAttack << " damage." << endl;
+        player->takeDamage(sithAttack);
 
-        if(loadedJedi.getHealth() <= 0){
-            cout << loadedJedi.getName() << " has been defeated." << endl;
+        if(player->getHealth() <= 0){
+            cout << player->getName() << " has been defeated." << endl;
             break;
         }
 
-        cout << loadedJedi.getName() << " Health: " << loadedJedi.getHealth() << " | " << darth.getName() << " Health: " << darth.getHealth() << endl;
+        cout << player->getName() << " Health: " << player->getHealth() << " | " << darth->getName() << " Health: " << darth->getHealth() << endl;
     }
 
     cout << "\nBattle Over.";
+    delete player;
+    delete darth;
     return 0;
 }

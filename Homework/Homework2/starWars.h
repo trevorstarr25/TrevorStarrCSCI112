@@ -26,8 +26,11 @@ namespace starwars {
         public:
             Jedi(std::string n = "Unknown Jedi", int h = 100, int ls = 50, int fp = 75);
 
+            std::string getName() const;
+            int getHealth();
             int getLightsaberSkill() const;
             int getForcePower() const;
+
             void setName(std::string n);
             void setHealth(int h);
             void setLightsaberSkill(int ls);
@@ -50,7 +53,7 @@ namespace starwars {
             Consular(std::string n = "Consular Jedi");
     };
 
-    class Sith {
+    class Sith : public Character {
         public:
             Sith(std::string n = "Unknown Sith", int h = 120, int ap = 60);
             void takeDmaage(int damage);
