@@ -30,7 +30,7 @@ namespace starwars {
             void takeDamage(int damager);
 
             void saveToFile(const std::string& filename) const;
-            coid loadFromFile(const std::string& filename);
+            void loadFromFile(const std::string& filename);
     };
 
     class Sith {
@@ -38,12 +38,18 @@ namespace starwars {
             std::string name;
             int health;
             int lightsaberSkill;
-    }
 
-    public:
-        Sith(std::string n = "Unknown Sith", int h = 120, int ls = 60);
 
-        std::string getName() const;
+        public:
+            Sith(std::string n = "Unknown Sith", int h = 120, int ls = 60);
+
+            std::string getName() const;
+            int getHealth() const;
+            int getLightsaberSkill() const;
+
+            void takeDamage(int damager);
+            int attack() const;
+    };
 }
 
 #endif
