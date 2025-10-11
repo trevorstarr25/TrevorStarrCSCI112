@@ -8,6 +8,7 @@ namespace starwars {
     std::string Jedi::getName() const {return name;}
     int Jedi::getHealth() const {return health;}
     int Jedi::getForcePower() const {return forcePower;}
+    int Jedi::getLightsaberSkill() const {return lightsaberSkill;}
 
     void Jedi::setName(std::string n) {name = n;}
     void Jedi::setHealth(int h) {health = h;}
