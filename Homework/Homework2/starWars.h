@@ -18,7 +18,7 @@ namespace starwars {
             std::string getName() const;
             int getHealth() const;
             int getLightsaberSkill() const;
-            int forcePower() const;
+            int getForcePower() const;
 
             void setName(std::string n);
             void setHealth(int h);
