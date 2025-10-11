@@ -5,14 +5,15 @@
 namespace starwars {
     Character::Character(std::string n, int h, int ap) : name(n), health(h), attackPower(ap) {}
     std::string Character::getName() const {return name;}
-    int Character::takeDamage(int damage) {
+    int Character::getHealth() const {return health;}
+    void Character::takeDamage(int damage) {
         health -= damage; 
         if(health < 0) 
              health = 0;
     }
     int Character::attack() const {return attackPower;}
 
-    Jedi::Jedi(std::string n, int h, int ls, int fp) : Character(n,h,ls), lightsaberSkill(ls, forcePower(fp) {}
+    Jedi::Jedi(std::string n, int h, int ls, int fp) : Character(n,h,ls), lightsaberSkill(ls), forcePower(fp) {}
 
     std::string Jedi::getName() const {return name;}
     int Jedi::getHealth() const {return health;}
@@ -63,8 +64,6 @@ namespace starwars {
     void Sith::takeDamage(int damage){
         Character::takeDamage(damage);
     }
-
-    int Sith::attack() const {return attackPower;}
 
     int Sith::attack() const {return attackPower;}
 

@@ -15,9 +15,6 @@ int main(){
     cout << "Enter Jedi name: ";
     getline(cin, jediName);
 
-    cout << "Enter Jedi name: ";
-    getline(cin, jediName);
-
     cout << "Choose Jedi type:\n1. Guardian\n2. Consular\nChoice: ";
     cin >> jediChoice;
 

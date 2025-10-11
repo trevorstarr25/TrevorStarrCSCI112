@@ -18,7 +18,7 @@ namespace starwars {
             virtual int attack() const;
     };
 
-    class Jedi{
+    class Jedi : public Character {
         protected:
             int lightsaberSkill;
             int forcePower;
@@ -27,7 +27,7 @@ namespace starwars {
             Jedi(std::string n = "Unknown Jedi", int h = 100, int ls = 50, int fp = 75);
 
             std::string getName() const;
-            int getHealth();
+            int getHealth() const;
             int getLightsaberSkill() const;
             int getForcePower() const;
 
@@ -56,7 +56,7 @@ namespace starwars {
     class Sith : public Character {
         public:
             Sith(std::string n = "Unknown Sith", int h = 120, int ap = 60);
-            void takeDmaage(int damage);
+            void takeDamage(int damage);
             int attack() const;
     };
 
