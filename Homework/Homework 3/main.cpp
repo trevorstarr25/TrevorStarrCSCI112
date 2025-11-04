@@ -43,6 +43,13 @@ int main(){
 
     cout << "\nYour opponent: " << darth->getName() << endl;
 
+    if(*player > loadedJedi)
+        cout << player->getName() << " is stronger than the loaded Jedi.\n";
+    else
+        cout << player->getName() << " is not stronger than the loaded Jedi.\n";
+    
+    cout << "\n--- Battle Start ---\n";
+
     while(player->getHealth() > 0 && darth->getHealth() > 0){
         int jediAttack = player->attack();
         int sithAttack = darth->attack();
@@ -63,8 +70,16 @@ int main(){
             break;
         }
 
-        cout << player->getName() << " Health: " << player->getHealth() << " | " << darth->getName() << " Health: " << darth->getHealth() << endl;
+        cout << "\nStatus:\n" << *player << "\n" << *darth << endl;
     }
+
+    cout << "\nHealing Jedi by +20 health...\n";
+    Jedi healedJedi = *player + 20;
+    cout << healedJedi << endl;
+
+    cout << "Damaging Sith by -30 health...\n";
+    Sith damagedSith = *darth - 30;
+    cout << damagedSith << endl;
 
     cout << "\nBattle Over.";
     delete player;
