@@ -27,6 +27,13 @@ namespace starwars {
         return temp;
     }
 
+    std::ostream& operator<<(std::ostream& os, const Character& c) {
+        os << "Name: " << c.name
+           << " | Health: " << c.health
+           << " | Attack Power: " << c.attackPower;
+        return os;
+    }
+
     Jedi::Jedi(std::string n, int h, int ls, int fp) : Character(n,h,ls), lightsaberSkill(ls), forcePower(fp) {}
 
     std::string Jedi::getName() const {return name;}
