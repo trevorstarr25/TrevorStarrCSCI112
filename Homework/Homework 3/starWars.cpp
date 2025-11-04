@@ -13,6 +13,12 @@ namespace starwars {
     }
     int Character::attack() const {return attackPower;}
 
+    Character Character::operator+(int value) const {
+        Character temp = *this;
+        temp.health += value;
+        return temp;
+    }
+
     Jedi::Jedi(std::string n, int h, int ls, int fp) : Character(n,h,ls), lightsaberSkill(ls), forcePower(fp) {}
 
     std::string Jedi::getName() const {return name;}
