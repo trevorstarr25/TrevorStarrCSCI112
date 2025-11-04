@@ -106,7 +106,9 @@ namespace starwars {
 
     Jedi Jedi::operator+(int value) const {
         Jedi temp = *this;
-        temp.setHealth(health + value);
+        if (health > 0){
+            temp.setHealth(health + value);
+        }
         return temp;
     }
 
@@ -120,7 +122,9 @@ namespace starwars {
 
     Sith Sith::operator+(int value) const {
         Sith temp = *this;
-        temp.takeDamage(-value);
+        if(health > 0){
+            temp.takeDamage(-value);
+        }
         return temp;
     }
 
