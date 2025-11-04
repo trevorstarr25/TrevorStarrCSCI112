@@ -80,6 +80,11 @@ namespace starwars {
         }
     }
 
+    bool Jedi::operator==(const Jedi& other) const { return health == other.health && lightsaberSkill == other.lightsaberSkill;}
+    bool Jeid::operator!=(const Jedi& other) const { return !(*this == other);}
+    bool Jedi::operator<(const Jedi& other) const { return health < other.health;}
+    bool Jedi::operator>(const Jedi& other) const { return health > other.health;}
+
     Sith::Sith(std::string n, int h, int ap) : Character(n,h,ap) {}
 
     void Sith::takeDamage(int damage){
