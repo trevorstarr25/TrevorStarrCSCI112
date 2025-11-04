@@ -19,6 +19,14 @@ namespace starwars {
         return temp;
     }
 
+    Character Character::operator-(int value) const {
+        Character temp = *this;
+        temp.health -= value;
+        if(temp.health < 0)
+            temp.health = 0;
+        return temp;
+    }
+
     Jedi::Jedi(std::string n, int h, int ls, int fp) : Character(n,h,ls), lightsaberSkill(ls), forcePower(fp) {}
 
     std::string Jedi::getName() const {return name;}
