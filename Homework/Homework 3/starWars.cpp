@@ -93,6 +93,11 @@ namespace starwars {
 
     int Sith::attack() const {return attackPower;}
 
+    bool Sith::operator==(const Sith& other) const { return health == other.health && attackPower == other.attackPower;}
+    bool Sith::operator!=(const Sith& other) const {return !(*this == other);}
+    bool Sith::operator<(const Sith& other) const { return health < other.health;}
+    bool Sith::operator>(cosnt Sith& other) const { return health > other.health;}
+
     Guardian::Guardian(std::string n) : Jedi(n,150,70,75) {}
     Consular::Consular(std::string n) : Jedi(n,100,50,120) {}
 
