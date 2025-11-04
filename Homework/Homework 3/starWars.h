@@ -20,6 +20,8 @@ namespace starwars {
             Character operator+(int value) const;
             Character operator-(int value) const;
             friend std::ostream& operator<<(std::ostream& os, const Character& c);
+
+
     };
 
     class Jedi : public Character {
@@ -51,6 +53,9 @@ namespace starwars {
             bool operator!=(const Jedi& other) const;
             bool operator<(const Jedi& other) const;
             bool operator>(const Jedi& other) const;
+
+            Jedi operator+(int value) const;
+            Jedi operator-(int value) const;
     };
 
     class Guardian : public Jedi {
@@ -72,6 +77,9 @@ namespace starwars {
             bool operator!=(const Sith& other) const;
             bool operator<(const Sith& other) const;
             bool operator>(const Sith& other) const;
+
+            Sith operator+(int value) const;
+            Sith operator-(int value) const;
     };
 
     class Acolyte : public Sith {

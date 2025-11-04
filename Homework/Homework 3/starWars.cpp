@@ -81,7 +81,7 @@ namespace starwars {
     }
 
     bool Jedi::operator==(const Jedi& other) const { return health == other.health && lightsaberSkill == other.lightsaberSkill;}
-    bool Jeid::operator!=(const Jedi& other) const { return !(*this == other);}
+    bool Jedi::operator!=(const Jedi& other) const { return !(*this == other);}
     bool Jedi::operator<(const Jedi& other) const { return health < other.health;}
     bool Jedi::operator>(const Jedi& other) const { return health > other.health;}
 
@@ -96,11 +96,37 @@ namespace starwars {
     bool Sith::operator==(const Sith& other) const { return health == other.health && attackPower == other.attackPower;}
     bool Sith::operator!=(const Sith& other) const {return !(*this == other);}
     bool Sith::operator<(const Sith& other) const { return health < other.health;}
-    bool Sith::operator>(cosnt Sith& other) const { return health > other.health;}
+    bool Sith::operator>(const Sith& other) const { return health > other.health;}
 
     Guardian::Guardian(std::string n) : Jedi(n,150,70,75) {}
     Consular::Consular(std::string n) : Jedi(n,100,50,120) {}
 
     Acolyte::Acolyte(std::string n) : Sith(n,80,40) {}
     Darth::Darth(std::string n) : Sith(n,200,100) {}
+
+    Jedi Jedi::operator+(int value) const {
+        Jedi temp = *this;
+        temp.setHealth(health + value);
+        return temp;
+    }
+
+    Jedi Jedi::operator-(int value) const {
+        Jedi temp = *this;
+        temp.setHealth(health - value);
+        if(temp.getHealth() < 0)
+            temp.setHealth(0);
+        return temp;
+    }
+
+    Sith Sith::operator+(int value) const {
+        Sith temp = *this;
+        temp.takeDamage(-value);
+        return temp;
+    }
+
+    Sith Sith::operator-(int value) const {
+        Sith temp = *this;
+        temp.takeDamage(value);
+        return temp;
+    }
 }
