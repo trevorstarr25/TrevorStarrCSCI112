@@ -37,10 +37,34 @@ double evaluateRPN(string expression)
                 s.push(a / b);
             }
         }
+        else{
+            cout << "Invalid token " << token << endl;
+            return NAN;
+        }
     }
+
+    if(s.size() != 1){
+        cout << "Invalid expression: too many operands" << endl;
+        return NAN;
+    }
+
+    return s.pop();
 }
 
 int main(int argc, char *argv[])
 {
+    if(argc == 3 && string(argv[1]) == "-p"){
+        double result = evaluateRPN(argv[2]);
+        cout << argv[2] << " = " << result << endl;
+        return 0;
+    }
+
+    string input;
+    cout << "Enter an RPN expression: ";
+    getline(cin, input);
+
+    double result = evaluateRPN(input);
+    cout << input << " = " << result << endl;
+
     return 0;
 }
