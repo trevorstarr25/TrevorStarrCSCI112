@@ -26,17 +26,22 @@ class Stack
 // set to nullptr and initialize stackSize
 Stack::Stack()
 {
+    _top = nullptr;
+    stackSize = 0;
 }
 
 // iteratively delete the stack starting at top
 Stack::~Stack()
 {
+    while(!empty())
+        pop();
 }
 
 // return true if the Stack is empty, false otherwise.
 // Do not just check stackSize, should actually check top
 bool Stack::empty()
 {
+    return (_top == nullptr);
 }
 
 // return number of elements in Stack
