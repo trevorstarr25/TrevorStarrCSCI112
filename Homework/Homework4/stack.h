@@ -47,21 +47,44 @@ bool Stack::empty()
 // return number of elements in Stack
 size_t Stack::size()
 {
+    return stackSize;
 }
 
 // add an element to the beginning of the Stack, updating top
 void Stack::push(double data)
 {
+    Node<double>* newNode = new Node<double>();
+    newNode->setData(data);
+    newNode->setNext(_top);
+    _top = newNode;
+    stackSize++;
 }
 
 // return the first element in the Stack.
 // if the Stack is empty, print an error and return NaN (from cmath)
 double Stack::top()
 {
+    if(empty()){
+        cout << "Error: Stack is empty" << endl;
+        return NAN;
+    }
+    return _top->getData();
 }
 
 // remove the first element from the Stack and return its data
 // if the Stack is empty, print an error and return NaN (from cmath)
 double Stack::pop()
 {
+    if(empty()){
+        cout << "Error: Stack is empty" << endl;
+        return NAN;
+    }
+
+    Node<double>* temp = _top;
+    double data = temp->getData();
+    _top = temp->getNext();
+    delete temp;
+    stackSize--;
+
+    return data;
 }
