@@ -63,5 +63,5 @@ bool Word::operator<(const Word &otherWord)
 // Check if this is greater than otherWord
 bool Word::operator>(const Word &otherWord)
 {
-    return false;
+    return _word > otherWord._word;
 }
