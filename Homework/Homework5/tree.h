@@ -153,6 +153,7 @@ Node<T1>* BST<T1>::insertNode(Node<T1>* root, T1 data)
 template <class T1>
 void BST<T1>::insert(T1 data)
 {
+    _root = insertNode(_root, data);
 }
 
 // Search for the word by calling searchData passing in _root and data.
@@ -160,4 +161,10 @@ void BST<T1>::insert(T1 data)
 template <class T1>
 void BST<T1>::increment(T1 data)
 {
+    Node<T1>* found = searchData(_root, data);
+    if(found != nullptr){
+        T1 tmp = found->getData();
+        tmp++;
+        found->setData(tmp);
+    }
 }
