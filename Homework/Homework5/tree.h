@@ -79,14 +79,25 @@ Node<T1>* BST<T1>::removeData(Node<T1>* root, T1 data)
 template <class T1>
 Node<T1>* BST<T1>::minVal(Node<T1>* root)
 {
-    return nullptr;
+    Node<T1>* current = root;
+    while(current != nullptr && current->getLeft() != nullptr)
+        current = current->getLeft();
+    return current;
 }
 
 // Given data and a node, recursively walk the tree to find that node if it exists.
 template <class T1>
 Node<T1>* BST<T1>::searchData(Node<T1>* root, T1 data)
 {
-    return nullptr;
+    if(root == nullptr)
+        return nullptr;
+    
+    if(data == root->getData())
+        return root;
+    else if(data < root->getData())
+        return searchData(root->getLeft(), data);
+    else
+        return searchData(root->getRight(), data);
 }
 
 // Wrapper function for searchData. Pass data, root into searchData and return true if data found, return false if data not found.
