@@ -25,12 +25,15 @@ class BST
 template <class T1>
 BST<T1>::~BST()
 {
+    if(_root != nullptr)
+        delete _root;
 }
 
 // Public method that takes in some data and passes that into the removeData method. Don't forget to update _root as you may end up deleting the original root.
 template <class T1>
 void BST<T1>::remove(T1 data)
 {
+    _root = removeData(_root, data);
 }
 
 // Private method to recursively walk the tree until the data is found.
@@ -41,7 +44,35 @@ void BST<T1>::remove(T1 data)
 template <class T1>
 Node<T1>* BST<T1>::removeData(Node<T1>* root, T1 data)
 {
-    return nullptr;
+    if(root == nullptr)
+        return root;
+
+    if(data < root->getData())
+        root->setLeft(removeData(root->getLeft(), data));
+
+    else if(data > root->getData())
+        root->setRight(removeData(root->getRight(), data));
+
+    else{
+        if(root->getLeft() == nullptr){
+            Node<T1>* temp = root->getRight();
+            root->setRight(nullptr);
+            delete root;
+            return temp;
+        }
+        else if(root->getRight() == nullptr){
+            Node<T1>* temp = root-getLeft();
+            root->setLeft(nullptr);
+            delete root;
+            return temp;
+        }
+
+        Node<T1>* temp = minVal(root->getRight());
+        root->setData(temp->getData());
+        root->setRight(removeData(root->getRight(), temp->getData()));
+    }
+
+    return root;
 }
 
 // Given a node, find the smallest value in that subtree. Return that node
