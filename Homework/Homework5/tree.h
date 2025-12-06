@@ -61,7 +61,7 @@ Node<T1>* BST<T1>::removeData(Node<T1>* root, T1 data)
             return temp;
         }
         else if(root->getRight() == nullptr){
-            Node<T1>* temp = root-getLeft();
+            Node<T1>* temp = root->getLeft();
             root->setLeft(nullptr);
             delete root;
             return temp;
@@ -118,7 +118,7 @@ void BST<T1>::inOrderPrint(Node<T1>* root)
             return;
 
         inOrderPrint(root->getLeft());
-        cout << root->getData() << " ";
+        std::cout << root->getData() << " ";
         inOrderPrint(root->getRight());
 }
 
