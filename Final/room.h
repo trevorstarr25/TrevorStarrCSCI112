@@ -15,4 +15,12 @@ class Room{
         void setEnemy(Enemy* e);
         void setItem(Item* i);
         void setNext(Room* n);
+
+        Enemy* getEnemy();
+        Item* getItem();
+        Room* getNext();
+        std::string getDescription();
+
+        void removeEnemy();
+        void removeItem();
 };
