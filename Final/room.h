@@ -15,4 +15,4 @@ class Room{
         void setEnemy(Enemy* e);
         void setItem(Item* i);
         void setNext(Room* n);
-}
+};
