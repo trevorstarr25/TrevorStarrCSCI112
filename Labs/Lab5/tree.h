@@ -45,6 +45,10 @@ void BST<T1>::destroyTree(Node<T1>* root)
 template <class T1>
 void BST<T1>::remove(T1 data)
 {
+    if(!search(data)){
+        std::cout << "Node not found" << std::endl;
+        return;
+    }
     _root = removeData(_root, data);
 }
 
@@ -138,7 +142,7 @@ void BST<T1>::inOrderPrint(Node<T1> *root)
         return;
     
     inOrderPrint(root->getLeft());
-    cout << root->getData() << " ";
+    std::cout << root->getData() << " ";
     inOrderPrint(root->getRight());
 }
 
@@ -168,7 +172,7 @@ Node<T1> *BST<T1>::insertNode(Node<T1> *root, T1 data)
         root->setRight(insertNode(root->getRight(), data));
     }
     else{
-        std::cout << data << " already exists in the tree" << endl;
+        std::cout << data << " already exists in the tree" << std::endl;
     }
 
     return root;
