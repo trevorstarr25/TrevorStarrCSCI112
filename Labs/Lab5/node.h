@@ -21,6 +21,7 @@ class Node
 template <class T1>
 Node<T1>::Node()
 {
+    _data = 0;
     _left = nullptr;
     _right = nullptr;
 }
