@@ -124,7 +124,7 @@ Node<T1> *BST<T1>::searchData(Node<T1> *root, T1 data)
 template <class T1>
 bool BST<T1>::search(T1 data)
 {
-    return false;
+    return searchData(_root, data) != nullptr;
 }
 
 // Given a node, recursively walk the tree to print out the inOrder format. That's left->root->right.
@@ -134,6 +134,11 @@ bool BST<T1>::search(T1 data)
 template <class T1>
 void BST<T1>::inOrderPrint(Node<T1> *root)
 {
+    if(root == nullptr)
+        return;
+    
+    inOrderPrint(root->getLeft());
+    cout << root->getData() << " ";
 }
 
 // Wrapper for inOrderPrint
