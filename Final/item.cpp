@@ -1,16 +1,16 @@
 #include "item.h"
 
-Item::Item(std::string n, int heal){
+Item::Item(std::string n, int e){
     name = n;
-    healAmount = heal;
+    effect = e;
 }
 
 std::string Item::use(){
     return name;
 }
 
-int Item::getHealAmount(){
-    return healAmount;
+int Item::getEffect(){
+    return effect;
 }
 
 std::string Item::getName(){

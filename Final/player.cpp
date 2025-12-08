@@ -7,7 +7,7 @@ Player::Player(std::string n){
 }
 
 void Player::attack(){
-    std::cout <<  "You attack the enemy!" << std::endl;
+    std::cout <<  "\nYou swing your broadsword at the enemy!" << std::endl;
 }
 
 void Player::takeDamage(int amount){
@@ -22,17 +22,29 @@ void Player::takeDamage(int amount){
 
 }
 
-void Player::addToInventory(std::string item){
+void Player::addToInventory(Item* item){
     inventory.push_back(item);
-    std::cout << item << " added to inventory." << std::endl;
+    std::cout << item->getName() << " added to inventory." << std::endl;
 }
 
 void Player::showInventory(){
     std::cout << "Inventory: ";
-    for(std::string i : inventory){
-        std::cout << i << ", ";
+    if(inventory.empty()){
+        std::cout << "(empty)";
+    } else {
+        for(Item* i : inventory){
+            std::cout << i->getName() << " (+" << i->getEffect() << " HP), ";
+        }
     }
     std::cout << std::endl;
+}
+
+
+void Player::heal(int amount){
+    health += amount;
+
+    std::cout << "The health potion increased your HP by: " << amount << std::endl;
+    std::cout << "Current HP: " << health << std::endl;
 }
 
 int Player::getHealth(){
@@ -41,4 +53,8 @@ int Player::getHealth(){
 
 std::string Player::getName(){
     return name;
+}
+
+std::vector<Item*>& Player::getInventory(){
+    return inventory;
 }

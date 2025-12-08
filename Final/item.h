@@ -4,12 +4,12 @@
 class Item{
     private:
         std::string name;
-        int healAmount;
+        int effect;
 
     public:
-        Item(std::string n, int heal);
+        Item(std::string n, int e);
 
         std::string use();
-        int getHealAmount();
+        int getEffect();
         std::string getName();
 };
