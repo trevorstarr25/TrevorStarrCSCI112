@@ -10,10 +10,10 @@ namespace starwars{
             std::string name;
             int health;
             int lightsaberSkill;
-            int forcepower;
+            int forcePower;
 
         public:
-            Jedi(std::string n = "Unknown Jedi";
+            Jedi(std::string n = "Unknown Jedi");
                 int h = 100;
                 int ls = 50;
                 int fp = 75;
