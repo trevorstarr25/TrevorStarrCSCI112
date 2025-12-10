@@ -9,7 +9,7 @@ namespace starwars{
         private:
             std::string name;
             int health;
-            int lightsaber skill;
+            int lightsaberSkill;
             int forcepower;
 
         public:
@@ -36,3 +36,5 @@ namespace starwars{
             void loadFromFile(const std::string& filename = "jedi.txt");
     };
 }
+
+#endif
