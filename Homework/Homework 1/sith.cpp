@@ -9,7 +9,7 @@ namespace starwars{
 
     void Sith::setName(const std::string& n) {name = n;}
     void Sith::setHealth(int h) {health = h;}
-    void Sith::getLightsaberSkill(int ls) {lighsaberSkill = ls;}
+    void Sith::setLightsaberSkill(int ls) {lightsaberSkill = ls;}
 
     int Sith::attack() const{
         return lightsaberSkill;

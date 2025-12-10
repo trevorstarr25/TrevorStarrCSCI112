@@ -2,9 +2,9 @@
 #include <fstream>
 #include <iostream>
 
-namespace starwars{
-    Jedi::Jedi(std::string n, int h, int ls, int fp) 
-        : name(n), health(h), lightsaberSkill(ls), forcePower(fp) {}
+namespace starwars {
+
+Jedi::Jedi(const std::string& n, int h, int ls, int fp) : name(n), health(h), lightsaberSkill(ls), forcePower(fp) {}
     
     std::string Jedi::getName() const {return name;}
     int Jedi::getHealth() const {return health;}

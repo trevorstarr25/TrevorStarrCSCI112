@@ -3,9 +3,9 @@
 
 #include <string>
 
-namespace starwars{
+namespace starwars {
 
-    class Jedi{
+class Jedi{
         private:
             std::string name;
             int health;
@@ -13,10 +13,7 @@ namespace starwars{
             int forcePower;
 
         public:
-            Jedi(std::string n = "Unknown Jedi");
-                int h = 100;
-                int ls = 50;
-                int fp = 75;
+            Jedi(const std::string& n = "Unknown Jedi", int h = 100, int ls = 50, int fp = 75);
 
             std::string getName() const;
             int getHealth() const;
